@@ -1,0 +1,24 @@
+pipeline {
+    agent any // This pipeline can run on any available agent
+    
+    stages {
+        stage('Build') {
+            steps {
+                // Execute a simple "Hello, World!" command
+                sh 'echo "Hello, World!"'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // Send a success notification when the build succeeds
+            echo 'Build successful! Send notifications...'
+        }
+        failure {
+            // Send a failure notification when the build fails
+            echo 'Build failed! Send notifications...'
+        }
+    }
+}
+
